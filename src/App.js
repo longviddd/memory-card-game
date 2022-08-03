@@ -5,6 +5,8 @@ import Card from './components/Card';
 function App() {
   const [cards, setCards] = useState([])
   const [turns, setTurns] = useState(0);
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choiceTwo, setChoiceTwo] = useState(null);
   const cardImages = [
     { "src": "/img/helmet-1.png"},
     { "src": "/img/potion-1.png"},
@@ -20,7 +22,9 @@ function App() {
       setCards(shuffleCards);
       setTurns(0)
   }
-  console.log(cards,turns)
+  const handleChoice = (card) => {
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
+  }
   return (
     
     <div className="App">
@@ -30,7 +34,10 @@ function App() {
       <div className="card-grid">
         {
           cards.map(card => (
-            <Card key={card.id} frontSrc={card.src} />
+            <Card 
+            key={card.id} 
+            card = {card}
+            handleChoice = {handleChoice} />
           ))
         }
       </div>
