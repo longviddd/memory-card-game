@@ -8,12 +8,12 @@ function App() {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const cardImages = [
-    { "src": "/img/helmet-1.png"},
-    { "src": "/img/potion-1.png"},
-    { "src": "/img/ring-1.png"},
-    { "src": "/img/scroll-1.png"},
-    { "src": "/img/shield-1.png"},
-    { "src": "/img/sword-1.png"},
+    { "src": "/img/helmet-1.png", matched: false},
+    { "src": "/img/potion-1.png", matched: false},
+    { "src": "/img/ring-1.png", matched: false},
+    { "src": "/img/scroll-1.png", matched: false},
+    { "src": "/img/shield-1.png", matched: false},
+    { "src": "/img/sword-1.png", matched: false},
   ]
   const shuffleCards = () => {
       const shuffleCards = [...cardImages, ...cardImages]
@@ -31,7 +31,15 @@ function App() {
       if(choiceTwo && choiceOne){
         
         if(choiceTwo.src === choiceOne.src){
-          console.log('those cards match')
+          setCards(prevCards => {
+            return prevCards.map(card => {
+              if(card.src === choiceOne.src){
+                return {...card, matched: true}
+              }else{
+                return card
+              }
+            })
+          })
         }else{
           console.log('those cards do not match')
         }
@@ -40,6 +48,7 @@ function App() {
     }
     compareChoices();
   }, [choiceOne, choiceTwo])
+  console.log(cards)
   const resetTurn = () => {
     setChoiceOne(null)
     setChoiceTwo(null)
