@@ -40,15 +40,12 @@ function App() {
               }
             })
           })
-        }else{
-          console.log('those cards do not match')
         }
         resetTurn()
       }
     }
     compareChoices();
   }, [choiceOne, choiceTwo])
-  console.log(cards)
   const resetTurn = () => {
     setChoiceOne(null)
     setChoiceTwo(null)
