@@ -4,7 +4,7 @@ import Card from './components/Card';
 
 function App() {
   const [cards, setCards] = useState([])
-  const [, setTurns] = useState(0);
+  const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
@@ -20,6 +20,8 @@ function App() {
       const shuffleCards = [...cardImages, ...cardImages]
       .sort(() => {return Math.random() - 0.5})
       .map((card) => {return {...card, id: Math.random()}})
+      setChoiceOne(null);
+      setChoiceTwo(null);
       setCards(shuffleCards);
       setTurns(0)
   }
@@ -51,6 +53,9 @@ function App() {
     }
     compareChoices();
   }, [choiceOne, choiceTwo])
+  useEffect(() => {
+    shuffleCards();
+  }, [])
   const resetTurn = () => {
     setChoiceOne(null)
     setChoiceTwo(null)
@@ -76,6 +81,7 @@ function App() {
           ))
         }
       </div>
+      <p>Turns: {turns}</p>
     </div>
   );
 }
