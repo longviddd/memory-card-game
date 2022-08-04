@@ -4,7 +4,7 @@ import Card from './components/Card';
 
 function App() {
   const [cards, setCards] = useState([])
-  const [turns, setTurns] = useState(0);
+  const [, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const cardImages = [
@@ -40,8 +40,11 @@ function App() {
               }
             })
           })
+          resetTurn();
+        }else{
+          setTimeout(() => resetTurn(), 1000)
         }
-        resetTurn()
+        
       }
     }
     compareChoices();
@@ -63,7 +66,8 @@ function App() {
             <Card 
             key={card.id} 
             card = {card}
-            handleChoice = {handleChoice} />
+            handleChoice = {handleChoice}
+            flipped={card === choiceOne || card === choiceTwo || card.matched} />
           ))
         }
       </div>
