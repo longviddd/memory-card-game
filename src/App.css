@@ -1,4 +1,4 @@
-.App {
+.SingleGame {
   max-width: 860px;
   margin: 40px auto;
 }
@@ -22,3 +22,26 @@ button:hover {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
 }
+.App {
+  max-width: 960px;
+  margin: 0 auto;
+}
+nav {
+  display: flex;
+  margin: 0 auto 60px;
+  gap: 10px;
+  align-items: center;
+}
+nav h1 {
+  margin-right: auto;
+}
+nav a {
+  color: white;
+  padding: 4px 10px;
+}
+nav a.active {
+  color: white;
+  background: #333;
+  text-decoration: none;
+}
+

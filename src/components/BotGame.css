@@ -1,0 +1,11 @@
+.BotGame {
+  max-width: 860px;
+  margin: 40px auto;
+}
+.scoreBox {
+  display: flex;
+  justify-content: space-between;
+}
+.indicatorDiv {
+  margin-top: 50px;
+}
